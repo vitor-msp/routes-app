@@ -36,6 +36,7 @@ export const GetRoutesPage = () => {
           handleChange={(data) => {
             setReqDTO(data);
           }}
+          showMaxStops={true}
         />
       ) : (
         <InputsGraphUnselected
@@ -43,6 +44,7 @@ export const GetRoutesPage = () => {
           handleChange={(data) => {
             setReqDTO(data);
           }}
+          showMaxStops={true}
         />
       )}
       <br />

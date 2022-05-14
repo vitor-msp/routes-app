@@ -7,9 +7,14 @@ import { AppDispatch, RootState } from "../store/store";
 interface Props {
   reqDTO: GetRoutesDTO;
   handleChange: (reqDTO: GetRoutesDTO) => any;
+  showMaxStops: boolean;
 }
 
-export const InputsGraphSelected: React.FC<Props> = ({ reqDTO, handleChange }) => {
+export const InputsGraphSelected: React.FC<Props> = ({
+  reqDTO,
+  handleChange,
+  showMaxStops,
+}) => {
   const graph = useSelector((state: RootState) => state.graph);
   const dispatch = useDispatch<AppDispatch>();
   const [sources, setSources] = useState<string[]>([]);
@@ -65,13 +70,19 @@ export const InputsGraphSelected: React.FC<Props> = ({ reqDTO, handleChange }) =
           </option>
         ))}
       </select>
-      <br />
-      <input
-        type="number"
-        min={0}
-        value={reqDTO.maxStops ?? ""}
-        onChange={(e) => handleChange({ ...reqDTO, maxStops: +e.target.value })}
-      />
+      {showMaxStops && (
+        <>
+          <br />
+          <input
+            type="number"
+            min={0}
+            value={reqDTO.maxStops ?? ""}
+            onChange={(e) =>
+              handleChange({ ...reqDTO, maxStops: +e.target.value })
+            }
+          />
+        </>
+      )}
     </div>
   );
 };

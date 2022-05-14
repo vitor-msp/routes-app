@@ -7,7 +7,7 @@ const initialState: IRoutesState = {
 };
 
 export const routesSlice = createSlice({
-  name: "graph",
+  name: "routes",
   initialState,
   reducers: {
     getRoutesSuccess: (state, { payload }: PayloadAction<IRoutes>) => {

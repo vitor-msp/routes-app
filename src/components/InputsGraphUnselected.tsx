@@ -3,9 +3,14 @@ import { GetRoutesDTO } from "../store/ducks/routes/routes.types";
 interface Props {
   reqDTO: GetRoutesDTO;
   handleChange: (reqDTO: GetRoutesDTO) => any;
+  showMaxStops: boolean;
 }
 
-export const InputsGraphUnselected: React.FC<Props> = ({ reqDTO, handleChange }) => {
+export const InputsGraphUnselected: React.FC<Props> = ({
+  reqDTO,
+  handleChange,
+  showMaxStops,
+}) => {
   return (
     <div>
       <input
@@ -30,13 +35,19 @@ export const InputsGraphUnselected: React.FC<Props> = ({ reqDTO, handleChange })
         value={reqDTO.town2}
         onChange={(e) => handleChange({ ...reqDTO, town2: e.target.value })}
       />
-      <br />
-      <input
-        type="number"
-        min={0}
-        value={reqDTO.maxStops ?? ""}
-        onChange={(e) => handleChange({ ...reqDTO, maxStops: +e.target.value })}
-      />
+      {showMaxStops && (
+        <>
+          <br />
+          <input
+            type="number"
+            min={0}
+            value={reqDTO.maxStops ?? ""}
+            onChange={(e) =>
+              handleChange({ ...reqDTO, maxStops: +e.target.value })
+            }
+          />
+        </>
+      )}
     </div>
   );
 };

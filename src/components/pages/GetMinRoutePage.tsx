@@ -34,6 +34,7 @@ export const GetMinRoutePage = () => {
           handleChange={(data) => {
             setReqDTO(data);
           }}
+          showMaxStops={false}
         />
       ) : (
         <InputsGraphUnselected
@@ -41,6 +42,7 @@ export const GetMinRoutePage = () => {
           handleChange={(data) => {
             setReqDTO(data);
           }}
+          showMaxStops={false}
         />
       )}
       <br />
