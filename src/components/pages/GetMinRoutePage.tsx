@@ -17,9 +17,11 @@ export const GetMinRoutePage = () => {
   });
   const dispatch = useDispatch<AppDispatch>();
   const path = useSelector((state: RootState) => state.path);
+  const [showResult, setShowResult] = useState(false);
 
-  const getMinRoute = () => {
-    dispatch(getMinRouteRequest(reqDTO));
+  const getMinRoute = async () => {
+    await dispatch(getMinRouteRequest(reqDTO));
+    setShowResult(true);
   };
 
   return (
@@ -57,9 +59,10 @@ export const GetMinRoutePage = () => {
       </form>
       <br />
       <div>
-        {!path.error && path.data?.distance && path.data?.path && (
-          <Path path={path.data} />
-        )}
+        {showResult &&
+          !path.error &&
+          path.data?.distance &&
+          path.data?.path && <Path path={path.data} />}
       </div>
       <div>{path.error && <span>Graph/Citie(s) Not Found</span>}</div>
     </div>

@@ -18,10 +18,12 @@ export const GetRoutesPage = () => {
   });
   const dispatch = useDispatch<AppDispatch>();
   const routes = useSelector((state: RootState) => state.routes);
+  const [showResult, setShowResult] = useState(false);
   let counter = 0;
 
-  const getRoutes = () => {
-    dispatch(getRoutesRequest(reqDTO));
+  const getRoutes = async () => {
+    await dispatch(getRoutesRequest(reqDTO));
+    setShowResult(true);
   };
 
   return (
@@ -29,11 +31,13 @@ export const GetRoutesPage = () => {
       GetRoutesPage
       <br />
       <NavLink to={"/"}>Home</NavLink>
-      <form onSubmit={(e) => {
-        e.preventDefault()
-        e.stopPropagation()
-        getRoutes();
-      }}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          getRoutes();
+        }}
+      >
         <br />
         {graph.selected ? (
           <InputsGraphSelected
@@ -57,7 +61,8 @@ export const GetRoutesPage = () => {
       </form>
       <br />
       <div>
-        {!routes.error &&
+        {showResult &&
+          !routes.error &&
           routes.data?.routes?.map(({ route, stops }) => (
             <Route key={counter++} route={route} stops={stops} />
           ))}
