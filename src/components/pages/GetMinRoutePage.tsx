@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { unselectGraph } from "../../store/ducks/graph/graph.slice";
 import { getMinRouteRequest } from "../../store/ducks/path/path.middlewares";
 import { GetMinRouteDTO } from "../../store/ducks/path/path.types";
 import { AppDispatch, RootState } from "../../store/store";
+import { InputsGraphSelected } from "../InputsGraphSelected";
+import { InputsGraphUnselected } from "../InputsGraphUnselected";
 import { Path } from "../Path";
 
 export const GetMinRoutePage = () => {
@@ -21,41 +22,27 @@ export const GetMinRoutePage = () => {
     dispatch(getMinRouteRequest(reqDTO));
   };
 
-  const editGraphId = () => {
-    dispatch(unselectGraph());
-  };
-
   return (
     <div>
       GetMinRoutePage
       <br />
       <NavLink to={"/"}>Home</NavLink>
       <br />
-      <input
-        type="number"
-        min={0}
-        readOnly={graph.selected}
-        value={reqDTO.graphId}
-        onChange={(e) => setReqDTO({ ...reqDTO, graphId: +e.target.value })}
-      />
-      <br />
-      {graph.selected && <button onClick={editGraphId}>editar id</button>}
-      <br />
-      <input
-        type="text"
-        size={1}
-        maxLength={1}
-        value={reqDTO.town1}
-        onChange={(e) => setReqDTO({ ...reqDTO, town1: e.target.value })}
-      />
-      <br />
-      <input
-        type="text"
-        size={1}
-        maxLength={1}
-        value={reqDTO.town2}
-        onChange={(e) => setReqDTO({ ...reqDTO, town2: e.target.value })}
-      />
+      {graph.selected ? (
+        <InputsGraphSelected
+          reqDTO={reqDTO}
+          handleChange={(data) => {
+            setReqDTO(data);
+          }}
+        />
+      ) : (
+        <InputsGraphUnselected
+          reqDTO={reqDTO}
+          handleChange={(data) => {
+            setReqDTO(data);
+          }}
+        />
+      )}
       <br />
       <button onClick={getMinRoute}>getMInRoutes</button>
       <br />
