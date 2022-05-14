@@ -1,8 +1,8 @@
-import { Graph } from "../store/ducks/graph/graph.types";
+import { IGraph } from "../store/ducks/graph/graph.types";
 import { GetMinRouteDTO } from "../store/ducks/path/path.types";
 import { GetRoutesDTO } from "../store/ducks/routes/routes.types";
 
-const auxGraph: Graph = {
+const auxGraph: IGraph = {
   id: 1,
   data: [
     { source: "A", target: "B", distance: 8 },
@@ -10,7 +10,7 @@ const auxGraph: Graph = {
   ],
 };
 
-export const postGraph = (graph: Graph) => {
+export const postGraph = (graph: IGraph) => {
   return {
     data: { id: 1, ...graph },
   };
