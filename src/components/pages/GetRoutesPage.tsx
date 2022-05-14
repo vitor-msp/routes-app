@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { unselectGraph } from "../../store/ducks/graph/graph.actions";
@@ -18,13 +18,31 @@ export const GetRoutesPage = () => {
   const dispatch: AppDispatch = useDispatch();
   const routes = useSelector((state: RootState) => state.routes);
   let counter = 0;
+  const [sources, setSources] = useState<string[]>([]);
+  const [targets, setTargets] = useState<string[]>([]);
 
   const getRoutes = async () => {
+    console.log(reqDTO);
     await dispatch(getRoutesRequest(reqDTO));
   };
 
   const editGraphId = async () => {
     await dispatch(unselectGraph());
+  };
+
+  useEffect(() => {
+    if (graph.selected) {
+      if (sources.length === 0) getSourcesFromGraph();
+      if (targets.length === 0) getTargetsFromGraph();
+    }
+  }, []);
+
+  const getSourcesFromGraph = () => {
+    setSources(graph.data?.data.map(({ source }) => source)!);
+  };
+
+  const getTargetsFromGraph = () => {
+    setTargets(graph.data?.data.map(({ target }) => target)!);
   };
 
   return (
@@ -43,21 +61,53 @@ export const GetRoutesPage = () => {
       <br />
       {graph.selected && <button onClick={editGraphId}>editar id</button>}
       <br />
-      <input
-        type="text"
-        size={1}
-        maxLength={1}
-        value={reqDTO.town1}
-        onChange={(e) => setReqDTO({ ...reqDTO, town1: e.target.value })}
-      />
+      {graph.selected ? (
+        <select
+          name="sources"
+          onChange={(e) => setReqDTO({ ...reqDTO, town1: e.target.value })}
+        >
+          <option key={"default"} value={""}>
+            {"--town1--"}
+          </option>
+          {sources.map((source) => (
+            <option key={source} value={source}>
+              {source}
+            </option>
+          ))}
+        </select>
+      ) : (
+        <input
+          type="text"
+          size={1}
+          maxLength={1}
+          value={reqDTO.town1}
+          onChange={(e) => setReqDTO({ ...reqDTO, town1: e.target.value })}
+        />
+      )}
       <br />
-      <input
-        type="text"
-        size={1}
-        maxLength={1}
-        value={reqDTO.town2}
-        onChange={(e) => setReqDTO({ ...reqDTO, town2: e.target.value })}
-      />
+      {graph.selected ? (
+        <select
+          name="targets"
+          onChange={(e) => setReqDTO({ ...reqDTO, town2: e.target.value })}
+        >
+          <option key={"default"} value={""}>
+            {"--town2--"}
+          </option>
+          {targets.map((target) => (
+            <option key={target} value={target}>
+              {target}
+            </option>
+          ))}
+        </select>
+      ) : (
+        <input
+          type="text"
+          size={1}
+          maxLength={1}
+          value={reqDTO.town2}
+          onChange={(e) => setReqDTO({ ...reqDTO, town2: e.target.value })}
+        />
+      )}
       <br />
       <input
         type="number"
