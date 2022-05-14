@@ -30,11 +30,15 @@ export const InputsGraphSelected: React.FC<Props> = ({
   }, []);
 
   const getSourcesFromGraph = () => {
-    setSources(graph.data?.data.map(({ source }) => source)!);
+    const set = new Set<string>();
+    graph.data?.data.forEach(({ source }) => set.add(source))!;
+    setSources(Array.from<string>(set));
   };
 
   const getTargetsFromGraph = () => {
-    setTargets(graph.data?.data.map(({ target }) => target)!);
+    const set = new Set<string>();
+    graph.data?.data.forEach(({ target }) => set.add(target))!;
+    setTargets(Array.from<string>(set));
   };
 
   return (
