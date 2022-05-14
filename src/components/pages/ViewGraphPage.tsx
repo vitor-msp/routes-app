@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getGraphRequest } from "../../store/ducks/graph/graph.middleware";
@@ -13,10 +13,14 @@ export const ViewGraphPage = () => {
   const graph = useSelector((state: RootState) => state.graph);
   let counter = 0;
 
-  const viewGraph = () => {
-    dispatch(getGraphRequest(graphId));
+  const viewGraph = async () => {
+    await dispatch(getGraphRequest(graphId));
     setShowResult(true);
   };
+
+  useEffect(() => {
+    console.log(graph);
+  }, [graph]);
 
   return (
     <div>

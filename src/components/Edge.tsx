@@ -25,6 +25,10 @@ export const Edge: React.FC<EdgeProps> = (props) => {
     if (editable) handleChange!(index!, edgeValues);
   }, [edgeValues]);
 
+  useEffect(() => {
+    setEdgeValues({ ...edgeValues, source, target, distance });
+  }, [source, target, distance]);
+
   return (
     <div style={{ border: "1px solid red" }}>
       <div>

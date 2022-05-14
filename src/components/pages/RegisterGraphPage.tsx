@@ -20,17 +20,19 @@ export const RegisterGraphPage = () => {
   const [edges, setEdges] = useState<EdgeImpl[]>([]);
   const dispatch = useDispatch<AppDispatch>();
   const graph = useSelector((state: RootState) => state.graph);
+  const [showResult, setShowResult] = useState(false);
 
   const createNewEdge = () => {
     setEdges([...edges, new EdgeImpl("", "", 0, edges.length)]);
   };
 
-  const registerGraph = () => {
-    dispatch(
+  const registerGraph = async () => {
+    await dispatch(
       postGraphRequest({
         data: edges,
       })
     );
+    setShowResult(true);
   };
 
   return (
@@ -44,7 +46,7 @@ export const RegisterGraphPage = () => {
       <button onClick={registerGraph}>Register</button>
       <br />
       <br />
-      {graph.data?.id && (
+      {showResult && graph.data?.id && (
         <>
           <input type="number" readOnly={true} value={graph.data?.id} />
           <BtnsGraphOpts />
