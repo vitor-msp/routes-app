@@ -3,7 +3,7 @@ export enum RoutesTypes {
   GET_FAILURE = "GET_FAILURE",
 }
 
-interface IRoute {
+export interface IRoute {
   route: string;
   stops: number;
 }
