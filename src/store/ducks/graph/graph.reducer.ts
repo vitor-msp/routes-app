@@ -11,7 +11,7 @@ export const graphReducer: Reducer<IGraphState> = (
   state = INITIAL_STATE,
   action
 ) => {
-  const { POST_SUCCESS, POST_FAILURE, GET_SUCCESS, GET_FAILURE, CLEAR, SELECT, UNSELECT } = GraphTypes;
+  const { POST_SUCCESS, POST_FAILURE, GET_SUCCESS, GET_FAILURE, CLEAR, TOGGLE } = GraphTypes;
 
   switch (action.type) {
     case POST_SUCCESS:
@@ -31,16 +31,10 @@ export const graphReducer: Reducer<IGraphState> = (
         selected: false
       };
     
-    case SELECT: 
+    case TOGGLE: 
       return {
         ...state,
-        selected: true
-      }
-    
-    case UNSELECT: 
-      return {
-        ...state,
-        selected: false
+        selected: action.payload
       }
     
     default:

@@ -1,24 +1,19 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { selectGraphId } from "../store/ducks/selectedGraph/selectedGraph.actions";
+import { selectGraph } from "../store/ducks/graph/graph.actions";
 import { AppDispatch } from "../store/store";
 
-interface Props {
-  id: number;
-}
-
-export const BtnsGraphOpts: React.FC<Props> = (props) => {
+export const BtnsGraphOpts = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
-  const { id } = props;
 
   const getRoutes = async () => {
-    await dispatch(selectGraphId(id));
+    await dispatch(selectGraph());
     navigate("/get-routes");
   };
 
   const getMinRoute = async () => {
-    await dispatch(selectGraphId(id));
+    await dispatch(selectGraph());
     navigate("/get-min-route");
   };
 

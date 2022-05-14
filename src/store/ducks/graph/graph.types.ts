@@ -4,8 +4,7 @@ export enum GraphTypes {
   GET_SUCCESS = "GET_SUCCESS",
   GET_FAILURE = "GET_FAILURE",
   CLEAR = "CLEAR",
-  SELECT = "SELECT",
-  UNSELECT = "UNSELECT",
+  TOGGLE = "TOGGLE",
 }
 
 export interface IEdge {

@@ -54,7 +54,7 @@ export const RegisterGraphPage = () => {
       {graph.data?.id && (
         <>
           <input type="number" readOnly={true} value={graph.data?.id} />
-          <BtnsGraphOpts id={graph.data.id} />
+          <BtnsGraphOpts />
         </>
       )}
       <div>

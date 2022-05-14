@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { clearGraph } from "../../store/ducks/graph/graph.actions";
 import { getGraphRequest } from "../../store/ducks/graph/graph.middleware";
 import { AppDispatch, RootState } from "../../store/store";
 import { BtnsGraphOpts } from "../BtnsGraphOpts";
@@ -18,12 +17,6 @@ export const ViewGraphPage = () => {
     await dispatch(getGraphRequest(graphId));
     setShowResult(true);
   };
-
-  // useEffect(() => {
-  //   (async () => {
-  //     await dispatch(clearGraph());
-  //   })();
-  // }, []);
 
   return (
     <div>
@@ -43,7 +36,7 @@ export const ViewGraphPage = () => {
       <div>
         {showResult && !graph.error && graph.data && (
           <>
-            {graph.data?.id && <BtnsGraphOpts id={graph.data.id} />}
+            {graph.data?.id && <BtnsGraphOpts/>}
 
             <div>
               {graph.data?.data?.map(({ source, target, distance }) => (

@@ -34,3 +34,17 @@ export const clearGraph = () => {
     payload: null,
   };
 };
+
+export const selectGraph = () => {
+  return {
+    type: GraphTypes.TOGGLE,
+    payload: true,
+  };
+};
+
+export const unselectGraph = () => {
+  return {
+    type: GraphTypes.TOGGLE,
+    payload: false,
+  };
+};
