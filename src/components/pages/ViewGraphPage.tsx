@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { clearGraph } from "../../store/ducks/graph/graph.actions";
 import { getGraphRequest } from "../../store/ducks/graph/graph.middleware";
 import { AppDispatch, RootState } from "../../store/store";
 import { Edge } from "../Edge";
@@ -13,6 +14,12 @@ export const ViewGraphPage = () => {
   const viewGraph = async () => {
     await dispatch(getGraphRequest(graphId));
   };
+  
+  useEffect(() => {
+    (async () => {
+      await dispatch(clearGraph());
+    })()
+  }, [])
 
   return (
     <div>

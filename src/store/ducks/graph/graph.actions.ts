@@ -27,3 +27,10 @@ export const getGraphFailure = () => {
     payload: null,
   };
 };
+
+export const clearGraph = () => {
+  return {
+    type: GraphTypes.CLEAR,
+    payload: null,
+  };
+};

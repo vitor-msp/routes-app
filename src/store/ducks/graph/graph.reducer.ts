@@ -10,11 +10,12 @@ export const graphReducer: Reducer<IGraphState> = (
   state = INITIAL_STATE,
   action
 ) => {
-  const { POST_SUCCESS, POST_FAILURE, GET_SUCCESS, GET_FAILURE } = GraphTypes;
+  const { POST_SUCCESS, POST_FAILURE, GET_SUCCESS, GET_FAILURE, CLEAR } = GraphTypes;
 
   switch (action.type) {
     case POST_SUCCESS:
     case GET_SUCCESS:
+    case CLEAR:
       return {
         data: action.payload,
         error: false,

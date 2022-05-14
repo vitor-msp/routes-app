@@ -3,6 +3,7 @@ export enum GraphTypes {
   POST_FAILURE = "POST_FAILURE",
   GET_SUCCESS = "GET_SUCCESS",
   GET_FAILURE = "GET_FAILURE",
+  CLEAR = "CLEAR",
 }
 
 export interface IEdge {
