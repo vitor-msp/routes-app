@@ -5,6 +5,7 @@ import { clearGraph } from "../../store/ducks/graph/graph.actions";
 import { postGraphRequest } from "../../store/ducks/graph/graph.middleware";
 import { IEdge } from "../../store/ducks/graph/graph.types";
 import { AppDispatch, RootState } from "../../store/store";
+import { BtnsGraphOpts } from "../BtnsGraphOpts";
 import { Edge } from "../Edge";
 
 class EdgeImpl implements IEdge {
@@ -26,16 +27,18 @@ export const RegisterGraphPage = () => {
   };
 
   const registerGraph = async () => {
-    await dispatch(postGraphRequest({
-      data: edges
-    }));
+    await dispatch(
+      postGraphRequest({
+        data: edges,
+      })
+    );
   };
 
-    useEffect(() => {
-      (async () => {
-        await dispatch(clearGraph());
-      })();
-    }, []);
+  useEffect(() => {
+    (async () => {
+      await dispatch(clearGraph());
+    })();
+  }, []);
 
   return (
     <div>
@@ -49,7 +52,10 @@ export const RegisterGraphPage = () => {
       <br />
       <br />
       {graph.data?.id && (
-        <input type="number" readOnly={true} value={graph.data?.id} />
+        <>
+          <input type="number" readOnly={true} value={graph.data?.id} />
+          <BtnsGraphOpts id={graph.data.id} />
+        </>
       )}
       <div>
         {edges.length !== 0 &&
