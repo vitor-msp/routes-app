@@ -3,7 +3,7 @@ export enum PathTypes {
   GET_FAILURE = "GET_FAILURE",
 }
 
-export interface Path {
+export interface IPath {
   distance: number;
   path: string[];
 }
@@ -14,7 +14,7 @@ export interface GetMinRouteDTO {
   town2: string;
 }
 
-export interface PathState {
-  readonly data: Path | null;
+export interface IPathState {
+  readonly data: IPath | null;
   readonly error: boolean;
 }

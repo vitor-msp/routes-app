@@ -1,12 +1,12 @@
 import { Reducer } from "redux";
-import { PathState, PathTypes} from "./path.types";
+import { IPathState, PathTypes} from "./path.types";
 
-const INITIAL_STATE: PathState = {
+const INITIAL_STATE: IPathState = {
   data: null,
   error: false,
 };
 
-export const pathReducer: Reducer<PathState> = (
+export const pathReducer: Reducer<IPathState> = (
   state = INITIAL_STATE,
   action
 ) => {

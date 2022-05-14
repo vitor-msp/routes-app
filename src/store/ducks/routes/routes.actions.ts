@@ -1,7 +1,7 @@
 import { Action, Dispatch } from "redux";
 import { getRoutes } from "../../../services/api";
 
-import { GetRoutesDTO, Routes, RoutesTypes } from "./routes.types";
+import { GetRoutesDTO, IRoutes, RoutesTypes } from "./routes.types";
 
 export const getRoutesRequest =
   (dto: GetRoutesDTO) => async (dispatch: Dispatch<Action>) => {
@@ -13,7 +13,7 @@ export const getRoutesRequest =
     }
   };
 
-const getRoutesSuccess = (routes: Routes) => {
+const getRoutesSuccess = (routes: IRoutes) => {
   return {
     type: RoutesTypes.GET_SUCCESS,
     payload: routes,

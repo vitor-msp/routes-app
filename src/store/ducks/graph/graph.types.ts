@@ -5,18 +5,18 @@ export enum GraphTypes {
   GET_FAILURE = "GET_FAILURE",
 }
 
-interface Edge {
+export interface IEdge {
   source: string;
   target: string;
   distance: number;
 }
 
-export interface Graph {
+export interface IGraph {
   id?: number;
-  data: Edge[];
+  data: IEdge[];
 }
 
-export interface GraphState {
-  readonly data: Graph | null;
+export interface IGraphState {
+  readonly data: IGraph | null;
   readonly error: boolean;
 }

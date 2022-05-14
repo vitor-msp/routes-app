@@ -1,12 +1,12 @@
 import { Reducer } from "redux";
-import { RoutesState, RoutesTypes } from "./routes.types";
+import { IRoutesState, RoutesTypes } from "./routes.types";
 
-const INITIAL_STATE: RoutesState = {
+const INITIAL_STATE: IRoutesState = {
   data: null,
   error: false,
 };
 
-export const routesReducer: Reducer<RoutesState> = (
+export const routesReducer: Reducer<IRoutesState> = (
   state = INITIAL_STATE,
   action
 ) => {

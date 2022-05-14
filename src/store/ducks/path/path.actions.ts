@@ -1,7 +1,7 @@
 import { Action, Dispatch } from "redux";
 import { getMinRoute } from "../../../services/api";
 
-import { GetMinRouteDTO, PathTypes, Path } from "./path.types";
+import { GetMinRouteDTO, PathTypes, IPath } from "./path.types";
 
 export const getMinRouteRequest =
   (dto: GetMinRouteDTO) => async (dispatch: Dispatch<Action>) => {
@@ -13,7 +13,7 @@ export const getMinRouteRequest =
     }
   };
 
-const getMinRouteSuccess = (path: Path) => {
+const getMinRouteSuccess = (path: IPath) => {
   return {
     type: PathTypes.GET_SUCCESS,
     payload: path,

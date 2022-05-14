@@ -3,13 +3,13 @@ export enum RoutesTypes {
   GET_FAILURE = "GET_FAILURE",
 }
 
-interface Route {
+interface IRoute {
   route: string;
   stops: number;
 }
 
-export interface Routes {
-  routes: Route[];
+export interface IRoutes {
+  routes: IRoute[];
 }
 
 export interface GetRoutesDTO {
@@ -19,7 +19,7 @@ export interface GetRoutesDTO {
   maxStops?: number;
 }
 
-export interface RoutesState {
-  readonly data: Routes | null;
+export interface IRoutesState {
+  readonly data: IRoutes | null;
   readonly error: boolean;
 }

@@ -1,10 +1,10 @@
 import { Action, Dispatch } from "redux";
 import { getGraph, postGraph } from "../../../services/api";
 
-import { Graph, GraphTypes } from "./graph.types";
+import { IGraph, GraphTypes } from "./graph.types";
 
 export const postGraphRequest =
-  (graph: Graph) => async (dispatch: Dispatch<Action>) => {
+  (graph: IGraph) => async (dispatch: Dispatch<Action>) => {
     try {
       const res = await postGraph(graph);
       dispatch(postGraphSuccess(res.data));
@@ -13,7 +13,7 @@ export const postGraphRequest =
     }
   };
 
-const postGraphSuccess = (graph: Graph) => {
+const postGraphSuccess = (graph: IGraph) => {
   return {
     type: GraphTypes.POST_SUCCESS,
     payload: graph,
@@ -37,7 +37,7 @@ export const getGraphRequest =
     }
   };
 
-const getGraphSuccess = (graph: Graph) => {
+const getGraphSuccess = (graph: IGraph) => {
   return {
     type: GraphTypes.GET_SUCCESS,
     payload: graph,
