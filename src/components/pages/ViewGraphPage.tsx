@@ -18,10 +18,6 @@ export const ViewGraphPage = () => {
     setShowResult(true);
   };
 
-  useEffect(() => {
-    console.log(graph);
-  }, [graph]);
-
   return (
     <div>
       ViewGraphPage

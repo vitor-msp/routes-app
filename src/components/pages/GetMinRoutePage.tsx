@@ -61,8 +61,7 @@ export const GetMinRoutePage = () => {
       <div>
         {showResult &&
           !path.error &&
-          path.data?.distance &&
-          path.data?.path && <Path path={path.data} />}
+          path.data && <Path path={path.data} />}
       </div>
       <div>{path.error && <span>Graph/Citie(s) Not Found</span>}</div>
     </div>

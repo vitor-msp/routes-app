@@ -19,15 +19,15 @@ export const getGraph = async (id: number) => {
 };
 
 export const getRoutes = async (dto: GetRoutesDTO) => {
-  const {graphId, town1, town2} = dto
+  const { graphId, town1, town2 } = dto;
   return await api.post(
-    `routes/${graphId}/from/${town1}/to/${town2}?maxStops=${dto.maxStops ?? undefined}`
+    `routes/${graphId}/from/${town1}/to/${town2}?maxStops=${
+      dto.maxStops ?? undefined
+    }`
   );
 };
 
 export const getMinRoute = async (dto: GetMinRouteDTO) => {
-  const {graphId, town1, town2} = dto
-  return await api.post(
-    `distance/${graphId}/from/${town1}/to/${town2}`
-  );
+  const { graphId, town1, town2 } = dto;
+  return await api.post(`distance/${graphId}/from/${town1}/to/${town2}`);
 };

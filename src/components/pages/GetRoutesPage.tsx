@@ -67,6 +67,11 @@ export const GetRoutesPage = () => {
             <Route key={counter++} route={route} stops={stops} />
           ))}
       </div>
+      <div>
+        {!routes.error && routes.data?.routes.length === 0 && (
+          <span>None Routes Founded</span>
+        )}
+      </div>
       <div>{routes.error && <span>Graph/Citie(s) Not Found</span>}</div>
     </div>
   );
