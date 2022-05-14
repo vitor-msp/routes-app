@@ -37,6 +37,7 @@ export const Edge: React.FC<EdgeProps> = (props) => {
           type={"text"}
           size={1}
           maxLength={1}
+          required={true}
           readOnly={!editable}
           value={edgeValues.source}
           onChange={(event) => {
@@ -51,6 +52,7 @@ export const Edge: React.FC<EdgeProps> = (props) => {
           type={"text"}
           size={1}
           maxLength={1}
+          required={true}
           readOnly={!editable}
           value={edgeValues.target}
           onChange={(event) => {
@@ -63,8 +65,9 @@ export const Edge: React.FC<EdgeProps> = (props) => {
         <label>Distance:</label>
         <input
           type={"number"}
-          min={0}
+          min={1}
           step={1}
+          required={true}
           readOnly={!editable}
           value={edgeValues.distance}
           onChange={(event) => {

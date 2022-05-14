@@ -43,8 +43,6 @@ export const RegisterGraphPage = () => {
       <br />
       <button onClick={createNewEdge}>+</button>
       <br />
-      <button onClick={registerGraph}>Register</button>
-      <br />
       <br />
       {showResult && graph.data?.id && (
         <>
@@ -52,28 +50,38 @@ export const RegisterGraphPage = () => {
           <BtnsGraphOpts />
         </>
       )}
-      <div>
-        {edges.length !== 0 &&
-          edges.map(({ source, target, distance, index }) => (
-            <Edge
-              key={index}
-              editable={true}
-              index={index!}
-              source={source}
-              target={target}
-              distance={distance}
-              handleChange={(index, edge) => {
-                const { source, target, distance } = edge;
-                edges[index] = {
-                  source: source!,
-                  target: target!,
-                  distance: distance!,
-                  index: edges[index].index,
-                };
-              }}
-            />
-          ))}
-      </div>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          registerGraph();
+        }}
+      >
+        <br />
+        <input type={"submit"} value={"Register"} />
+        <div>
+          {edges.length !== 0 &&
+            edges.map(({ source, target, distance, index }) => (
+              <Edge
+                key={index}
+                editable={true}
+                index={index!}
+                source={source}
+                target={target}
+                distance={distance}
+                handleChange={(index, edge) => {
+                  const { source, target, distance } = edge;
+                  edges[index] = {
+                    source: source!,
+                    target: target!,
+                    distance: distance!,
+                    index: edges[index].index,
+                  };
+                }}
+              />
+            ))}
+        </div>
+      </form>
     </div>
   );
 };
