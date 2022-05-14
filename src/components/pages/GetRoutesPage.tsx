@@ -58,10 +58,12 @@ export const GetRoutesPage = () => {
       <br />
       <div>
         {!routes.error &&
+          routes.data &&
           routes.data?.routes.map(({ route, stops }) => (
             <Route key={counter++} route={route} stops={stops} />
           ))}
       </div>
+      <div>{routes.error && <span>Graph/Citie(s) Not Found</span>}</div>
     </div>
   );
 };

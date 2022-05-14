@@ -1,6 +1,11 @@
 import { Action, Dispatch } from "redux";
 import { getGraph, postGraph } from "../../../services/api";
-import { getGraphFailure, getGraphSuccess, postGraphFailure, postGraphSuccess } from "./graph.actions";
+import {
+  getGraphFailure,
+  getGraphSuccess,
+  postGraphFailure,
+  postGraphSuccess,
+} from "./graph.actions";
 
 import { IGraph } from "./graph.types";
 
@@ -23,4 +28,3 @@ export const getGraphRequest =
       dispatch(getGraphFailure());
     }
   };
-

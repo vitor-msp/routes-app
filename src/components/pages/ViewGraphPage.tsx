@@ -40,6 +40,7 @@ export const ViewGraphPage = () => {
             />
           ))}
       </div>
+      <div>{graph.error && <span>Graph Not Found</span>}</div>
     </div>
   );
 };

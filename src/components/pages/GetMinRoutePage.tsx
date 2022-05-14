@@ -48,6 +48,7 @@ export const GetMinRoutePage = () => {
       <button onClick={getMinRoute}>getMInRoutes</button>
       <br />
       <div>{!path.error && path.data && <Path path={path.data!} />}</div>
+      <div>{path.error && <span>Graph/Citie(s) Not Found</span>}</div>
     </div>
   );
 };
