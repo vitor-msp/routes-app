@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { clearGraph } from "../../store/ducks/graph/graph.actions";
 import { getGraphRequest } from "../../store/ducks/graph/graph.middleware";
 import { AppDispatch, RootState } from "../../store/store";
@@ -24,6 +25,8 @@ export const ViewGraphPage = () => {
   return (
     <div>
       ViewGraphPage
+      <br />
+      <NavLink to={"/"}>Home</NavLink>
       <br />
       <input
         type="number"

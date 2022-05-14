@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { postGraphRequest } from "../../store/ducks/graph/graph.middleware";
 import { IEdge } from "../../store/ducks/graph/graph.types";
 import { AppDispatch, RootState } from "../../store/store";
@@ -33,16 +34,16 @@ export const RegisterGraphPage = () => {
     <div>
       RegisterGraphPage
       <br />
+      <NavLink to={"/"}>Home</NavLink>
+      <br />
       <button onClick={createNewEdge}>+</button>
       <br />
       <button onClick={registerGraph}>Register</button>
       <br />
       <br />
-      {graph.data?.id && <input
-        type="number"
-        readOnly={true}
-        value={graph.data?.id}
-      />}
+      {graph.data?.id && (
+        <input type="number" readOnly={true} value={graph.data?.id} />
+      )}
       <div>
         {edges.length !== 0 &&
           edges.map(({ source, target, distance, index }) => (

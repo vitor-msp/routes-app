@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { getMinRouteRequest } from "../../store/ducks/path/path.middlewares";
 import { GetMinRouteDTO } from "../../store/ducks/path/path.types";
 import { AppDispatch, RootState } from "../../store/store";
@@ -21,6 +22,8 @@ export const GetMinRoutePage = () => {
   return (
     <div>
       GetMinRoutePage
+      <br />
+      <NavLink to={"/"}>Home</NavLink>
       <br />
       <input
         type="number"
