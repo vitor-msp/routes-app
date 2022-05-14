@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { unselectGraph } from "../../store/ducks/graph/graph.actions";
+import { unselectGraph } from "../../store/ducks/graph/graph.slice";
 import { getRoutesRequest } from "../../store/ducks/routes/routes.middlewares";
 import { GetRoutesDTO } from "../../store/ducks/routes/routes.types";
 import { AppDispatch, RootState } from "../../store/store";
@@ -9,25 +9,26 @@ import { Route } from "../Route";
 
 export const GetRoutesPage = () => {
   const graph = useSelector((state: RootState) => state.graph);
+  const pathSel = useSelector((state: RootState) => state.path);
+  const routesSel = useSelector((state: RootState) => state.routes);
   const [reqDTO, setReqDTO] = useState<GetRoutesDTO>({
     graphId: graph.selected ? graph.data!.id! : 0,
     town1: "",
     town2: "",
     maxStops: undefined,
   });
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const routes = useSelector((state: RootState) => state.routes);
   let counter = 0;
   const [sources, setSources] = useState<string[]>([]);
   const [targets, setTargets] = useState<string[]>([]);
 
-  const getRoutes = async () => {
-    console.log(reqDTO);
-    await dispatch(getRoutesRequest(reqDTO));
+  const getRoutes = () => {
+    dispatch(getRoutesRequest(reqDTO));
   };
 
-  const editGraphId = async () => {
-    await dispatch(unselectGraph());
+  const editGraphId = () => {
+    dispatch(unselectGraph());
   };
 
   useEffect(() => {
@@ -36,6 +37,12 @@ export const GetRoutesPage = () => {
       if (targets.length === 0) getTargetsFromGraph();
     }
   }, []);
+
+  useEffect(() => {
+    console.log("graph", graph);
+    console.log("pathSel", pathSel);
+    console.log("routesSel", routesSel);
+  }, [graph, pathSel, routesSel]);
 
   const getSourcesFromGraph = () => {
     setSources(graph.data?.data.map(({ source }) => source)!);

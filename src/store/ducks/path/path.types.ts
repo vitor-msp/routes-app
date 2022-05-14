@@ -1,8 +1,3 @@
-export enum PathTypes {
-  GET_SUCCESS = "GET_SUCCESS",
-  GET_FAILURE = "GET_FAILURE",
-}
-
 export interface IPath {
   distance: number;
   path: string[];
@@ -15,6 +10,6 @@ export interface GetMinRouteDTO {
 }
 
 export interface IPathState {
-  readonly data: IPath | null;
-  readonly error: boolean;
+  data: IPath | null;
+  error: boolean;
 }

@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { clearGraph } from "../../store/ducks/graph/graph.actions";
 import { postGraphRequest } from "../../store/ducks/graph/graph.middleware";
 import { IEdge } from "../../store/ducks/graph/graph.types";
 import { AppDispatch, RootState } from "../../store/store";
@@ -19,26 +18,20 @@ class EdgeImpl implements IEdge {
 
 export const RegisterGraphPage = () => {
   const [edges, setEdges] = useState<EdgeImpl[]>([]);
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const graph = useSelector((state: RootState) => state.graph);
 
   const createNewEdge = () => {
     setEdges([...edges, new EdgeImpl("", "", 0, edges.length)]);
   };
 
-  const registerGraph = async () => {
-    await dispatch(
+  const registerGraph = () => {
+    dispatch(
       postGraphRequest({
         data: edges,
       })
     );
   };
-
-  useEffect(() => {
-    (async () => {
-      await dispatch(clearGraph());
-    })();
-  }, []);
 
   return (
     <div>

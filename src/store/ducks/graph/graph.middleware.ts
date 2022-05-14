@@ -1,16 +1,11 @@
-import { Action, Dispatch } from "redux";
 import { getGraph, postGraph } from "../../../services/api";
-import {
-  getGraphFailure,
-  getGraphSuccess,
-  postGraphFailure,
-  postGraphSuccess,
-} from "./graph.actions";
-
+import { AppThunk } from "../../store";
+import { getGraphFailure, getGraphSuccess, postGraphFailure, postGraphSuccess } from "./graph.slice";
 import { IGraph } from "./graph.types";
 
 export const postGraphRequest =
-  (graph: IGraph) => async (dispatch: Dispatch<Action>) => {
+  (graph: IGraph): AppThunk =>
+  async (dispatch) => {
     try {
       const res = await postGraph(graph);
       dispatch(postGraphSuccess(res.data));
@@ -20,7 +15,8 @@ export const postGraphRequest =
   };
 
 export const getGraphRequest =
-  (id: number) => async (dispatch: Dispatch<Action>) => {
+  (id: number): AppThunk =>
+  async (dispatch) => {
     try {
       const res = await getGraph(id);
       dispatch(getGraphSuccess(res.data));

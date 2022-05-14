@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { unselectGraph } from "../../store/ducks/graph/graph.actions";
+import { unselectGraph } from "../../store/ducks/graph/graph.slice";
 import { getMinRouteRequest } from "../../store/ducks/path/path.middlewares";
 import { GetMinRouteDTO } from "../../store/ducks/path/path.types";
 import { AppDispatch, RootState } from "../../store/store";
@@ -14,15 +14,15 @@ export const GetMinRoutePage = () => {
     town1: "",
     town2: "",
   });
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const path = useSelector((state: RootState) => state.path);
 
-  const getMinRoute = async () => {
-    await dispatch(getMinRouteRequest(reqDTO));
+  const getMinRoute = () => {
+    dispatch(getMinRouteRequest(reqDTO));
   };
-  
-  const editGraphId = async () => {
-    await dispatch(unselectGraph());
+
+  const editGraphId = () => {
+    dispatch(unselectGraph());
   };
 
   return (
@@ -39,9 +39,7 @@ export const GetMinRoutePage = () => {
         onChange={(e) => setReqDTO({ ...reqDTO, graphId: +e.target.value })}
       />
       <br />
-      {graph.selected && (
-        <button onClick={editGraphId} >editar id</button>
-      )}
+      {graph.selected && <button onClick={editGraphId}>editar id</button>}
       <br />
       <input
         type="text"

@@ -1,11 +1,12 @@
-import { Action, Dispatch } from "redux";
 import { getMinRoute } from "../../../services/api";
-import { getMinRouteFailure, getMinRouteSuccess } from "./path.actions";
+import { AppThunk } from "../../store";
+import { getMinRouteFailure, getMinRouteSuccess } from "./path.slice";
 
 import { GetMinRouteDTO } from "./path.types";
 
 export const getMinRouteRequest =
-  (dto: GetMinRouteDTO) => async (dispatch: Dispatch<Action>) => {
+  (dto: GetMinRouteDTO): AppThunk =>
+  async (dispatch) => {
     try {
       const res = await getMinRoute(dto);
       dispatch(getMinRouteSuccess(res.data));

@@ -1,12 +1,3 @@
-export enum GraphTypes {
-  POST_SUCCESS = "POST_SUCCESS",
-  POST_FAILURE = "POST_FAILURE",
-  GET_SUCCESS = "GET_SUCCESS",
-  GET_FAILURE = "GET_FAILURE",
-  CLEAR = "CLEAR",
-  TOGGLE = "TOGGLE",
-}
-
 export interface IEdge {
   source: string;
   target: string;
@@ -19,7 +10,7 @@ export interface IGraph {
 }
 
 export interface IGraphState {
-  readonly data: IGraph | null;
-  readonly error: boolean;
-  readonly selected: boolean;
+  data: IGraph | null;
+  error: boolean;
+  selected: boolean;
 }

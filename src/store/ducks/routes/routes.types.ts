@@ -1,8 +1,3 @@
-export enum RoutesTypes {
-  GET_SUCCESS = "GET_SUCCESS",
-  GET_FAILURE = "GET_FAILURE",
-}
-
 export interface IRoute {
   route: string;
   stops: number;
@@ -20,6 +15,6 @@ export interface GetRoutesDTO {
 }
 
 export interface IRoutesState {
-  readonly data: IRoutes | null;
-  readonly error: boolean;
+  data: IRoutes | null;
+  error: boolean;
 }
