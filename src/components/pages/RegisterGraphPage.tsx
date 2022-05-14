@@ -26,6 +26,12 @@ export const RegisterGraphPage = () => {
     setEdges([...edges, new EdgeImpl("", "", 0, edges.length)]);
   };
 
+  const removeLastEdge = () => {
+    const newEdges = Object.assign([], edges);
+    newEdges.pop();
+    setEdges(newEdges);
+  };
+
   const registerGraph = async () => {
     await dispatch(
       postGraphRequest({
@@ -42,6 +48,8 @@ export const RegisterGraphPage = () => {
       <NavLink to={"/"}>Home</NavLink>
       <br />
       <button onClick={createNewEdge}>+</button>
+      <br />
+      <button onClick={removeLastEdge}>-</button>
       <br />
       <br />
       {showResult && graph.data?.id && (
@@ -72,10 +80,10 @@ export const RegisterGraphPage = () => {
                 handleChange={(index, edge) => {
                   const { source, target, distance } = edge;
                   edges[index] = {
+                    ...edges[index],
                     source: source!,
                     target: target!,
                     distance: distance!,
-                    index: edges[index].index,
                   };
                 }}
               />
