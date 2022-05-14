@@ -5,6 +5,7 @@ import { getRoutesRequest } from "../../store/ducks/routes/routes.middlewares";
 import { GetRoutesDTO } from "../../store/ducks/routes/routes.types";
 import { AppDispatch, RootState } from "../../store/store";
 import { InputsGraphSelected } from "../InputsGraphSelected";
+import { InputsGraphUnselected } from "../InputsGraphUnselected";
 import { Route } from "../Route";
 
 export const GetRoutesPage = () => {
@@ -30,40 +31,19 @@ export const GetRoutesPage = () => {
       <NavLink to={"/"}>Home</NavLink>
       <br />
       {graph.selected ? (
-        <>
-          <InputsGraphSelected
-            reqDTO={reqDTO}
-            handleChange={(data) => {
-              setReqDTO(data);
-            }}
-          />
-        </>
+        <InputsGraphSelected
+          reqDTO={reqDTO}
+          handleChange={(data) => {
+            setReqDTO(data);
+          }}
+        />
       ) : (
-        <>
-          <input
-            type="number"
-            min={0}
-            readOnly={graph.selected}
-            value={reqDTO.graphId}
-            onChange={(e) => setReqDTO({ ...reqDTO, graphId: +e.target.value })}
-          />
-          <br />
-          <input
-            type="text"
-            size={1}
-            maxLength={1}
-            value={reqDTO.town1}
-            onChange={(e) => setReqDTO({ ...reqDTO, town1: e.target.value })}
-          />
-          <br />
-          <input
-            type="text"
-            size={1}
-            maxLength={1}
-            value={reqDTO.town2}
-            onChange={(e) => setReqDTO({ ...reqDTO, town2: e.target.value })}
-          />
-        </>
+        <InputsGraphUnselected
+          reqDTO={reqDTO}
+          handleChange={(data) => {
+            setReqDTO(data);
+          }}
+        />
       )}
       <br />
       <button onClick={getRoutes}>getRoutes</button>
