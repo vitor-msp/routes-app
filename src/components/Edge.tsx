@@ -6,13 +6,13 @@ interface IEdge {
   distance?: number;
 }
 
-type Props = IEdge & {
+type EdgeProps = IEdge & {
   editable: boolean;
   index?: number;
   handleChange?: (index: number, edge: IEdge) => any;
 };
 
-export const Edge: React.FC<Props> = (props) => {
+export const Edge: React.FC<EdgeProps> = (props) => {
   const { source, target, distance, editable, index, handleChange } = props;
   const defaulEdgeValues: IEdge = {
     source,

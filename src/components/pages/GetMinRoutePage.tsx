@@ -7,8 +7,9 @@ import { AppDispatch, RootState } from "../../store/store";
 import { Path } from "../Path";
 
 export const GetMinRoutePage = () => {
+  const selectedGraph = useSelector((state: RootState) => state.selectedGraph);
   const [reqDTO, setReqDTO] = useState<GetMinRouteDTO>({
-    graphId: 0,
+    graphId: selectedGraph.id ?? 0,
     town1: "",
     town2: "",
   });
@@ -50,7 +51,11 @@ export const GetMinRoutePage = () => {
       <br />
       <button onClick={getMinRoute}>getMInRoutes</button>
       <br />
-      <div>{!path.error && path.data && <Path path={path.data!} />}</div>
+      <div>
+        {!path.error && path.data?.distance && path.data?.path && (
+          <Path path={path.data} />
+        )}
+      </div>
       <div>{path.error && <span>Graph/Citie(s) Not Found</span>}</div>
     </div>
   );

@@ -1,11 +1,11 @@
 import React from "react";
 import { IPath } from "../store/ducks/path/path.types";
 
-interface Props {
+interface PathProps {
   path: IPath;
 }
 
-export const Path: React.FC<Props> = (props) => {
+export const Path: React.FC<PathProps> = (props) => {
   const { distance, path } = props.path;
   return (
     <div>

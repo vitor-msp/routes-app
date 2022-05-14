@@ -1,14 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { graphReducer } from "./ducks/graph/graph.reducer";
-import { pathReducer } from "./ducks/path/path.reducer";
-import { routesReducer } from "./ducks/routes/routes.reducer";
+import { rootReducer } from "./ducks/rootReducer";
 
 export const store = configureStore({
-  reducer: {
-    graph: graphReducer,
-    routes: routesReducer,
-    path: pathReducer
-  },
+  reducer: rootReducer,
 });
 
 export type RootState = ReturnType<typeof store.getState>;

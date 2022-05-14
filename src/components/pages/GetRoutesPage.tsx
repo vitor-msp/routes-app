@@ -7,8 +7,9 @@ import { AppDispatch, RootState } from "../../store/store";
 import { Route } from "../Route";
 
 export const GetRoutesPage = () => {
+  const selectedGraph = useSelector((state: RootState) => state.selectedGraph);
   const [reqDTO, setReqDTO] = useState<GetRoutesDTO>({
-    graphId: 0,
+    graphId: selectedGraph.id ?? 0,
     town1: "",
     town2: "",
     maxStops: undefined,
@@ -61,8 +62,7 @@ export const GetRoutesPage = () => {
       <br />
       <div>
         {!routes.error &&
-          routes.data &&
-          routes.data?.routes.map(({ route, stops }) => (
+          routes.data?.routes?.map(({ route, stops }) => (
             <Route key={counter++} route={route} stops={stops} />
           ))}
       </div>
