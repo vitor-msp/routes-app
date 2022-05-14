@@ -1,54 +1,33 @@
+import axios from "axios";
 import { IGraph } from "../store/ducks/graph/graph.types";
 import { GetMinRouteDTO } from "../store/ducks/path/path.types";
 import { GetRoutesDTO } from "../store/ducks/routes/routes.types";
 
-const auxGraph: IGraph = {
-  id: 1,
-  data: [
-    { source: "A", target: "B", distance: 8 },
-    { source: "A", target: "B", distance: 8 },
-    { source: "A", target: "B", distance: 8 },
-    { source: "Z", target: "B", distance: 50 },
-    { source: "A", target: "B", distance: 8 },
-  ],
+const api = axios.create({
+  baseURL: "http://localhost:8080",
+  headers: {
+    "Content-type": "application/json",
+  },
+});
+
+export const postGraph = async (graph: IGraph) => {
+  return await api.post("/graph", graph);
 };
 
-export const postGraph = (graph: IGraph) => {
-  return {
-    data: { id: 1, ...graph },
-  };
+export const getGraph = async (id: number) => {
+  return await api.get(`/graph/${id}`);
 };
 
-export const getGraph = (id: number) => {
-  return { data: auxGraph };
+export const getRoutes = async (dto: GetRoutesDTO) => {
+  const {graphId, town1, town2} = dto
+  return await api.post(
+    `routes/${graphId}/from/${town1}/to/${town2}?maxStops=${dto.maxStops ?? undefined}`
+  );
 };
 
-
-export const getRoutes = (dto: GetRoutesDTO) => {
-  return {
-    data: {
-      routes: [
-        {
-          route: "ABC",
-          stops: 2,
-        },
-        {
-          route: "ADC",
-          stops: 2,
-        },
-        {
-          route: "AEBC",
-          stops: 3,
-        },
-      ],
-    },
-  };
-};
-export const getMinRoute = (dto: GetMinRouteDTO) => {
-  return {
-    data: {
-      distance: 8,
-      path: ["A", "B", "C"],
-    },
-  };
+export const getMinRoute = async (dto: GetMinRouteDTO) => {
+  const {graphId, town1, town2} = dto
+  return await api.post(
+    `distance/${graphId}/from/${town1}/to/${town2}`
+  );
 };
