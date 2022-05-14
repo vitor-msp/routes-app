@@ -39,12 +39,19 @@ export const InputsGraphSelected: React.FC<Props> = ({
 
   return (
     <div>
-      <input type="number" min={0} readOnly={true} value={reqDTO.graphId} />
+      <input
+        type="number"
+        min={1}
+        required={true}
+        readOnly={true}
+        value={reqDTO.graphId}
+      />
       <br />
       <button onClick={editGraphId}>editar id</button>
       <br />
       <select
         name="sources"
+        required={true}
         onChange={(e) => handleChange({ ...reqDTO, town1: e.target.value })}
       >
         <option key={"default"} value={""}>
@@ -59,6 +66,7 @@ export const InputsGraphSelected: React.FC<Props> = ({
       <br />
       <select
         name="targets"
+        required={true}
         onChange={(e) => handleChange({ ...reqDTO, town2: e.target.value })}
       >
         <option key={"default"} value={""}>

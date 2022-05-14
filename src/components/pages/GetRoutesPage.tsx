@@ -11,7 +11,7 @@ import { Route } from "../Route";
 export const GetRoutesPage = () => {
   const graph = useSelector((state: RootState) => state.graph);
   const [reqDTO, setReqDTO] = useState<GetRoutesDTO>({
-    graphId: graph.selected ? graph.data!.id! : 0,
+    graphId: graph.selected ? graph.data!.id! : 1,
     town1: "",
     town2: "",
     maxStops: undefined,
@@ -29,26 +29,32 @@ export const GetRoutesPage = () => {
       GetRoutesPage
       <br />
       <NavLink to={"/"}>Home</NavLink>
-      <br />
-      {graph.selected ? (
-        <InputsGraphSelected
-          reqDTO={reqDTO}
-          handleChange={(data) => {
-            setReqDTO(data);
-          }}
-          showMaxStops={true}
-        />
-      ) : (
-        <InputsGraphUnselected
-          reqDTO={reqDTO}
-          handleChange={(data) => {
-            setReqDTO(data);
-          }}
-          showMaxStops={true}
-        />
-      )}
-      <br />
-      <button onClick={getRoutes}>getRoutes</button>
+      <form onSubmit={(e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        getRoutes();
+      }}>
+        <br />
+        {graph.selected ? (
+          <InputsGraphSelected
+            reqDTO={reqDTO}
+            handleChange={(data) => {
+              setReqDTO(data);
+            }}
+            showMaxStops={true}
+          />
+        ) : (
+          <InputsGraphUnselected
+            reqDTO={reqDTO}
+            handleChange={(data) => {
+              setReqDTO(data);
+            }}
+            showMaxStops={true}
+          />
+        )}
+        <br />
+        <input type={"submit"} value={"getRoutes"} />
+      </form>
       <br />
       <div>
         {!routes.error &&

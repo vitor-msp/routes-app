@@ -11,7 +11,7 @@ import { Path } from "../Path";
 export const GetMinRoutePage = () => {
   const graph = useSelector((state: RootState) => state.graph);
   const [reqDTO, setReqDTO] = useState<GetMinRouteDTO>({
-    graphId: graph.selected ? graph.data!.id! : 0,
+    graphId: graph.selected ? graph.data!.id! : 1,
     town1: "",
     town2: "",
   });
@@ -27,26 +27,34 @@ export const GetMinRoutePage = () => {
       GetMinRoutePage
       <br />
       <NavLink to={"/"}>Home</NavLink>
-      <br />
-      {graph.selected ? (
-        <InputsGraphSelected
-          reqDTO={reqDTO}
-          handleChange={(data) => {
-            setReqDTO(data);
-          }}
-          showMaxStops={false}
-        />
-      ) : (
-        <InputsGraphUnselected
-          reqDTO={reqDTO}
-          handleChange={(data) => {
-            setReqDTO(data);
-          }}
-          showMaxStops={false}
-        />
-      )}
-      <br />
-      <button onClick={getMinRoute}>getMInRoutes</button>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          getMinRoute();
+        }}
+      >
+        <br />
+        {graph.selected ? (
+          <InputsGraphSelected
+            reqDTO={reqDTO}
+            handleChange={(data) => {
+              setReqDTO(data);
+            }}
+            showMaxStops={false}
+          />
+        ) : (
+          <InputsGraphUnselected
+            reqDTO={reqDTO}
+            handleChange={(data) => {
+              setReqDTO(data);
+            }}
+            showMaxStops={false}
+          />
+        )}
+        <br />
+        <input type={"submit"} value={"getMInRoutes"} />
+      </form>
       <br />
       <div>
         {!path.error && path.data?.distance && path.data?.path && (

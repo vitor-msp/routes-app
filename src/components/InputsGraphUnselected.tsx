@@ -15,7 +15,8 @@ export const InputsGraphUnselected: React.FC<Props> = ({
     <div>
       <input
         type="number"
-        min={0}
+        min={1}
+        required={true}
         value={reqDTO.graphId}
         onChange={(e) => handleChange({ ...reqDTO, graphId: +e.target.value })}
       />
@@ -24,6 +25,7 @@ export const InputsGraphUnselected: React.FC<Props> = ({
         type="text"
         size={1}
         maxLength={1}
+        required={true}
         value={reqDTO.town1}
         onChange={(e) => handleChange({ ...reqDTO, town1: e.target.value })}
       />
@@ -32,6 +34,7 @@ export const InputsGraphUnselected: React.FC<Props> = ({
         type="text"
         size={1}
         maxLength={1}
+        required={true}
         value={reqDTO.town2}
         onChange={(e) => handleChange({ ...reqDTO, town2: e.target.value })}
       />
