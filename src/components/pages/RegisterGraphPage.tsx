@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { clearGraph } from "../../store/ducks/graph/graph.actions";
 import { postGraphRequest } from "../../store/ducks/graph/graph.middleware";
 import { IEdge } from "../../store/ducks/graph/graph.types";
 import { AppDispatch, RootState } from "../../store/store";
@@ -29,6 +30,12 @@ export const RegisterGraphPage = () => {
       data: edges
     }));
   };
+
+    useEffect(() => {
+      (async () => {
+        await dispatch(clearGraph());
+      })();
+    }, []);
 
   return (
     <div>
