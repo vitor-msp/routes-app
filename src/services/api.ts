@@ -7,6 +7,9 @@ const auxGraph: IGraph = {
   data: [
     { source: "A", target: "B", distance: 8 },
     { source: "A", target: "B", distance: 8 },
+    { source: "A", target: "B", distance: 8 },
+    { source: "Z", target: "B", distance: 50 },
+    { source: "A", target: "B", distance: 8 },
   ],
 };
 

@@ -8,8 +8,8 @@ interface IEdge {
 
 type Props = IEdge & {
   editable: boolean;
-  index: number;
-  handleChange: (index: number, edge: IEdge) => any;
+  index?: number;
+  handleChange?: (index: number, edge: IEdge) => any;
 };
 
 export const Edge: React.FC<Props> = (props) => {
@@ -22,7 +22,7 @@ export const Edge: React.FC<Props> = (props) => {
   const [edgeValues, setEdgeValues] = useState(defaulEdgeValues);
 
   useEffect(() => {
-    handleChange(index, edgeValues);
+    if (editable) handleChange!(index!, edgeValues);
   }, [edgeValues]);
 
   return (
