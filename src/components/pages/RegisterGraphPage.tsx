@@ -1,5 +1,8 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { postGraphRequest } from "../../store/ducks/graph/graph.actions";
 import { IEdge } from "../../store/ducks/graph/graph.types";
+import { AppDispatch, RootState } from "../../store/store";
 import { Edge } from "../Edge";
 
 class EdgeImpl implements IEdge {
@@ -13,13 +16,17 @@ class EdgeImpl implements IEdge {
 
 export const RegisterGraphPage = () => {
   const [edges, setEdges] = useState<EdgeImpl[]>([]);
+  const dispatch: AppDispatch = useDispatch();
+  const graph = useSelector((state: RootState) => state.graph);
 
   const createNewEdge = () => {
     setEdges([...edges, new EdgeImpl("", "", 0, edges.length)]);
   };
 
-  const registerGraph = () => {
-    console.log(edges);
+  const registerGraph = async () => {
+    await dispatch(postGraphRequest({
+      data: edges
+    }));
   };
 
   return (
@@ -30,6 +37,12 @@ export const RegisterGraphPage = () => {
       <br />
       <button onClick={registerGraph}>Register</button>
       <br />
+      <br />
+      {graph.data?.id && <input
+        type="number"
+        readOnly={true}
+        value={graph.data?.id}
+      />}
       <div>
         {edges.length !== 0 &&
           edges.map(({ source, target, distance, index }) => (
