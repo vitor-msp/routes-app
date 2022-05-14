@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { postGraphRequest } from "../../store/ducks/graph/graph.actions";
+import { postGraphRequest } from "../../store/ducks/graph/graph.middleware";
 import { IEdge } from "../../store/ducks/graph/graph.types";
 import { AppDispatch, RootState } from "../../store/store";
 import { Edge } from "../Edge";

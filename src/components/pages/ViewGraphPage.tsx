@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getGraphRequest } from "../../store/ducks/graph/graph.actions";
+import { getGraphRequest } from "../../store/ducks/graph/graph.middleware";
 import { AppDispatch, RootState } from "../../store/store";
 import { Edge } from "../Edge";
 
@@ -18,12 +18,18 @@ export const ViewGraphPage = () => {
     <div>
       ViewGraphPage
       <br />
-      <input type="number" value={graphId} onChange={(e) => setGraphId(+e.target.value)} />
+      <input
+        type="number"
+        min={0}
+        value={graphId}
+        onChange={(e) => setGraphId(+e.target.value)}
+      />
       <br />
       <button onClick={viewGraph}>View</button>
       <br />
       <div>
         {!graph.error &&
+          graph.data &&
           graph.data?.data.map(({ source, target, distance }) => (
             <Edge
               key={counter++}

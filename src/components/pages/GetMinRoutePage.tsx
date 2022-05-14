@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getMinRouteRequest } from "../../store/ducks/path/path.actions";
+import { getMinRouteRequest } from "../../store/ducks/path/path.middlewares";
 import { GetMinRouteDTO } from "../../store/ducks/path/path.types";
 import { AppDispatch, RootState } from "../../store/store";
 import { Path } from "../Path";

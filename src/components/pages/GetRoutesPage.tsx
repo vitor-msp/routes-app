@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getRoutesRequest } from "../../store/ducks/routes/routes.actions";
+import { getRoutesRequest } from "../../store/ducks/routes/routes.middlewares";
 import { GetRoutesDTO } from "../../store/ducks/routes/routes.types";
 import { AppDispatch, RootState } from "../../store/store";
 import { Route } from "../Route";
