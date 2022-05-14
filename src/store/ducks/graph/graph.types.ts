@@ -4,6 +4,8 @@ export enum GraphTypes {
   GET_SUCCESS = "GET_SUCCESS",
   GET_FAILURE = "GET_FAILURE",
   CLEAR = "CLEAR",
+  SELECT = "SELECT",
+  UNSELECT = "UNSELECT",
 }
 
 export interface IEdge {
@@ -20,4 +22,5 @@ export interface IGraph {
 export interface IGraphState {
   readonly data: IGraph | null;
   readonly error: boolean;
+  readonly selected: boolean;
 }

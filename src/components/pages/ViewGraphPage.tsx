@@ -9,19 +9,21 @@ import { Edge } from "../Edge";
 
 export const ViewGraphPage = () => {
   const [graphId, setGraphId] = useState(0);
+  const [showResult, setShowResult] = useState(false);
   const dispatch: AppDispatch = useDispatch();
   const graph = useSelector((state: RootState) => state.graph);
   let counter = 0;
 
   const viewGraph = async () => {
     await dispatch(getGraphRequest(graphId));
+    setShowResult(true);
   };
 
-  useEffect(() => {
-    (async () => {
-      await dispatch(clearGraph());
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     await dispatch(clearGraph());
+  //   })();
+  // }, []);
 
   return (
     <div>
@@ -39,7 +41,7 @@ export const ViewGraphPage = () => {
       <button onClick={viewGraph}>View</button>
       <br />
       <div>
-        {!graph.error && graph.data && (
+        {showResult && !graph.error && graph.data && (
           <>
             {graph.data?.id && <BtnsGraphOpts id={graph.data.id} />}
 
