@@ -12,15 +12,17 @@ export const InputsGraphUnselected: React.FC<Props> = ({
   showMaxStops,
 }) => {
   return (
-    <div>
+    <div className="my-3 d-flex">
+      <label>Graph Id:</label>
       <input
         type="number"
         min={1}
         required={true}
         value={reqDTO.graphId}
         onChange={(e) => handleChange({ ...reqDTO, graphId: +e.target.value })}
+        className="form-control w-auto mx-1"
       />
-      <br />
+      <label>From:</label>
       <input
         type="text"
         size={1}
@@ -28,8 +30,9 @@ export const InputsGraphUnselected: React.FC<Props> = ({
         required={true}
         value={reqDTO.town1}
         onChange={(e) => handleChange({ ...reqDTO, town1: e.target.value })}
+        className="form-control w-auto mx-1"
       />
-      <br />
+      <label>To:</label>
       <input
         type="text"
         size={1}
@@ -37,10 +40,11 @@ export const InputsGraphUnselected: React.FC<Props> = ({
         required={true}
         value={reqDTO.town2}
         onChange={(e) => handleChange({ ...reqDTO, town2: e.target.value })}
+        className="form-control w-auto mx-1"
       />
       {showMaxStops && (
         <>
-          <br />
+          <label className="">Max Stops:</label>
           <input
             type="number"
             min={0}
@@ -48,6 +52,7 @@ export const InputsGraphUnselected: React.FC<Props> = ({
             onChange={(e) =>
               handleChange({ ...reqDTO, maxStops: +e.target.value })
             }
+            className="form-control w-auto mx-1"
           />
         </>
       )}

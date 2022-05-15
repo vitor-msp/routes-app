@@ -28,9 +28,14 @@ export const GetRoutesPage = () => {
 
   return (
     <div>
-      GetRoutesPage
-      <br />
-      <NavLink to={"/"}>Home</NavLink>
+      <h3 className="text-light">{">> Get Routes Graph"}</h3>
+      <NavLink
+        to={"/"}
+        className="btn btn-outline-success text-center border border-dark rounded bg-light bg-opacity-25"
+      >
+        {"<- Home"}
+      </NavLink>
+
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -38,7 +43,6 @@ export const GetRoutesPage = () => {
           getRoutes();
         }}
       >
-        <br />
         {graph.selected ? (
           <InputsGraphSelected
             reqDTO={reqDTO}
@@ -56,11 +60,9 @@ export const GetRoutesPage = () => {
             showMaxStops={true}
           />
         )}
-        <br />
-        <input type={"submit"} value={"getRoutes"} />
+        <input type={"submit"} value={"getRoutes"} className="btn btn-outline-light"/>
       </form>
-      <br />
-      <div>
+      <div className="my-3">
         {showResult &&
           !routes.error &&
           routes.data?.routes?.map(({ route, stops }) => (
