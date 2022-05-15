@@ -44,7 +44,7 @@ export const InputsGraphUnselected: React.FC<Props> = ({
       />
       {showMaxStops && (
         <>
-          <label className="">Max Stops:</label>
+          <label>Max Stops:</label>
           <input
             type="number"
             min={0}

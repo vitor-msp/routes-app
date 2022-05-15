@@ -42,21 +42,27 @@ export const InputsGraphSelected: React.FC<Props> = ({
   };
 
   return (
-    <div>
+    <div className="d-flex my-3">
+      <label>Graph Id:</label>
       <input
         type="number"
         min={1}
         required={true}
         readOnly={true}
         value={reqDTO.graphId}
+        className="form-control w-auto mx-1"
       />
-      <br />
-      <button onClick={editGraphId}>editar id</button>
-      <br />
+
+      <button type="button" onClick={editGraphId} className="btn btn-outline-light mx-1">
+        editar id
+      </button>
+
+      <label>From:</label>
       <select
         name="sources"
         required={true}
         onChange={(e) => handleChange({ ...reqDTO, town1: e.target.value })}
+        className="form-control w-auto mx-1"
       >
         <option key={"default"} value={""}>
           {"--town1--"}
@@ -67,11 +73,13 @@ export const InputsGraphSelected: React.FC<Props> = ({
           </option>
         ))}
       </select>
-      <br />
+
+      <label>To:</label>
       <select
         name="targets"
         required={true}
         onChange={(e) => handleChange({ ...reqDTO, town2: e.target.value })}
+        className="form-control w-auto mx-1"
       >
         <option key={"default"} value={""}>
           {"--town2--"}
@@ -82,9 +90,10 @@ export const InputsGraphSelected: React.FC<Props> = ({
           </option>
         ))}
       </select>
+
       {showMaxStops && (
         <>
-          <br />
+          <label>Max Stops:</label>
           <input
             type="number"
             min={0}
@@ -92,6 +101,7 @@ export const InputsGraphSelected: React.FC<Props> = ({
             onChange={(e) =>
               handleChange({ ...reqDTO, maxStops: +e.target.value })
             }
+            className="form-control w-auto mx-1"
           />
         </>
       )}
