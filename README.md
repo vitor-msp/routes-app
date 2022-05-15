@@ -2,7 +2,7 @@
 
 Site para obtenção das melhores rotas para transporte em um mapa (grafo).
 
-O backend está disponibilizado no GitLab e pode ser acessado [aqui](https://gitlab.com/vitor-msp/desafio-dev-jr-pl.git)
+O backend está disponibilizado no GitLab e pode ser acessado [aqui](https://gitlab.com/vitor-msp/desafio-dev-jr-pl)
 
 ## Execução
 
