@@ -30,9 +30,9 @@ export const Edge: React.FC<EdgeProps> = (props) => {
   }, [source, target, distance]);
 
   return (
-    <div style={{ border: "1px solid red" }}>
-      <div>
-        <label>Source:</label>
+    <div className="my-3 border rounded">
+      <div className="form-group row my-1">
+        <label className="col-1 text-end">Source:</label>
         <input
           type={"text"}
           size={1}
@@ -43,11 +43,12 @@ export const Edge: React.FC<EdgeProps> = (props) => {
           onChange={(event) => {
             setEdgeValues({ ...edgeValues, source: event.target.value });
           }}
+          className="form-control w-auto col-11"
         />
       </div>
 
-      <div>
-        <label>Target:</label>
+      <div className="form-group row my-1">
+        <label className="col-1 text-end">Target:</label>
         <input
           type={"text"}
           size={1}
@@ -58,11 +59,12 @@ export const Edge: React.FC<EdgeProps> = (props) => {
           onChange={(event) => {
             setEdgeValues({ ...edgeValues, target: event.target.value });
           }}
+          className="form-control w-auto col-11"
         />
       </div>
 
-      <div>
-        <label>Distance:</label>
+      <div className="form-group row my-1">
+        <label className="col-1 text-end">Distance:</label>
         <input
           type={"number"}
           min={1}
@@ -73,6 +75,7 @@ export const Edge: React.FC<EdgeProps> = (props) => {
           onChange={(event) => {
             setEdgeValues({ ...edgeValues, distance: +event.target.value });
           }}
+          className="form-control w-auto col-11"
         />
       </div>
     </div>

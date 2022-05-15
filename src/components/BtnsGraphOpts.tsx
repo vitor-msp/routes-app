@@ -17,9 +17,9 @@ export const BtnsGraphOpts = () => {
   };
 
   return (
-    <div>
-      <button onClick={getRoutes}>get routes</button>
-      <button onClick={getMinRoute}>get min route</button>
+    <div className="mx-3">
+      <button onClick={getRoutes} className="btn btn-outline-light mx-1">get routes</button>
+      <button onClick={getMinRoute} className="btn btn-outline-light mx-1">get min route</button>
     </div>
   );
 };

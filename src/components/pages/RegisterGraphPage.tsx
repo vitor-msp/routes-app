@@ -43,20 +43,19 @@ export const RegisterGraphPage = () => {
 
   return (
     <div>
-      RegisterGraphPage
-      <br />
-      <NavLink to={"/"}>Home</NavLink>
-      <br />
-      <button onClick={createNewEdge}>+</button>
-      <br />
-      <button onClick={removeLastEdge}>-</button>
-      <br />
+      <h3 className="text-light">{">> Register Graph"}</h3>
+      <NavLink
+        to={"/"}
+        className="btn btn-outline-success text-center border border-dark rounded bg-light bg-opacity-25"
+      >
+        {"<- Home"}
+      </NavLink>
       <br />
       {showResult && graph.data?.id && (
-        <>
-          <input type="number" readOnly={true} value={graph.data?.id} />
+        <div className="d-flex my-3">
+          <input type="number" readOnly={true} value={graph.data?.id} className="form-control w-auto"/>
           <BtnsGraphOpts />
-        </>
+        </div>
       )}
       <form
         onSubmit={(e) => {
@@ -65,9 +64,30 @@ export const RegisterGraphPage = () => {
           registerGraph();
         }}
       >
-        <br />
-        <input type={"submit"} value={"Register"} />
-        <div>
+        <div className="my-2 d-flex justify-content-between">
+          <input
+            type={"submit"}
+            value={"Register"}
+            className="btn btn-outline-light"
+          />
+          <div>
+            <button
+              type="button"
+              onClick={createNewEdge}
+              className="btn btn-outline-light px-3 mx-2"
+            >
+              +
+            </button>
+            <button
+              type="button"
+              onClick={removeLastEdge}
+              className="btn btn-outline-light px-3 "
+            >
+              -
+            </button>
+          </div>
+        </div>
+        <div className="my-2">
           {edges.length !== 0 &&
             edges.map(({ source, target, distance, index }) => (
               <Edge
