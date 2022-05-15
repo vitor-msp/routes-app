@@ -60,7 +60,7 @@ export const GetRoutesPage = () => {
             showMaxStops={true}
           />
         )}
-        <input type={"submit"} value={"getRoutes"} className="btn btn-outline-light"/>
+        <input type={"submit"} value={"Get Routes"} className="btn btn-outline-light"/>
       </form>
       <div className="my-3">
         {showResult &&

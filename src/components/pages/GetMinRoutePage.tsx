@@ -26,9 +26,14 @@ export const GetMinRoutePage = () => {
 
   return (
     <div>
-      GetMinRoutePage
-      <br />
-      <NavLink to={"/"}>Home</NavLink>
+      <h3 className="text-light">{">> Get Min Route Graph"}</h3>
+      <NavLink
+        to={"/"}
+        className="btn btn-outline-success text-center border border-dark rounded bg-light bg-opacity-25"
+      >
+        {"<- Home"}
+      </NavLink>
+
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -36,7 +41,6 @@ export const GetMinRoutePage = () => {
           getMinRoute();
         }}
       >
-        <br />
         {graph.selected ? (
           <InputsGraphSelected
             reqDTO={reqDTO}
@@ -54,14 +58,14 @@ export const GetMinRoutePage = () => {
             showMaxStops={false}
           />
         )}
-        <br />
-        <input type={"submit"} value={"getMInRoutes"} />
+        <input
+          type={"submit"}
+          value={"Get Min Routes"}
+          className="btn btn-outline-light"
+        />
       </form>
-      <br />
-      <div>
-        {showResult &&
-          !path.error &&
-          path.data && <Path path={path.data} />}
+      <div className="my-2">
+        {showResult && !path.error && path.data && <Path path={path.data} />}
       </div>
       <div>{path.error && <span>Graph/Citie(s) Not Found</span>}</div>
     </div>

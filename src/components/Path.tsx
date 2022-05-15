@@ -8,14 +8,14 @@ interface PathProps {
 export const Path: React.FC<PathProps> = (props) => {
   const { distance, path } = props.path;
   return (
-    <div>
+    <div className="border rounded p-2">
       <div>
-        <strong>Distance:</strong>
+        <strong>{"Distance:  "}</strong>
         <span>{distance}</span>
       </div>
 
       <div>
-        <strong>Path:</strong>
+        <strong>{"Path:  "}</strong>
         <span>{path.join(" - ")}</span>
       </div>
     </div>
