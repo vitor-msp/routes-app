@@ -7,7 +7,7 @@ import { BtnsGraphOpts } from "../BtnsGraphOpts";
 import { Edge } from "../Edge";
 
 export const ViewGraphPage = () => {
-  const [graphId, setGraphId] = useState(0);
+  const [graphId, setGraphId] = useState(1);
   const [showResult, setShowResult] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
   const graph = useSelector((state: RootState) => state.graph);
@@ -23,15 +23,24 @@ export const ViewGraphPage = () => {
       ViewGraphPage
       <br />
       <NavLink to={"/"}>Home</NavLink>
-      <br />
-      <input
-        type="number"
-        min={0}
-        value={graphId}
-        onChange={(e) => setGraphId(+e.target.value)}
-      />
-      <br />
-      <button onClick={viewGraph}>View</button>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          viewGraph();
+        }}
+      >
+        <br />
+        <input
+          type="number"
+          min={1}
+          required={true}
+          value={graphId}
+          onChange={(e) => setGraphId(+e.target.value)}
+        />
+        <br />
+        <input type={"submit"} value={"View"} />
+      </form>
       <br />
       <div>
         {showResult && !graph.error && graph.data && (
