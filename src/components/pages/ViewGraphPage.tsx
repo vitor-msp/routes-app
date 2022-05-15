@@ -20,9 +20,13 @@ export const ViewGraphPage = () => {
 
   return (
     <div>
-      ViewGraphPage
-      <br />
-      <NavLink to={"/"}>Home</NavLink>
+      <h3 className="text-light">{">> View Graph"}</h3>
+      <NavLink
+        to={"/"}
+        className="btn btn-outline-success text-center border border-dark rounded bg-light bg-opacity-25"
+      >
+        {"<- Home"}
+      </NavLink>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -30,18 +34,18 @@ export const ViewGraphPage = () => {
           viewGraph();
         }}
       >
-        <br />
-        <input
-          type="number"
-          min={1}
-          required={true}
-          value={graphId}
-          onChange={(e) => setGraphId(+e.target.value)}
-        />
-        <br />
-        <input type={"submit"} value={"View"} />
+        <div className="my-3 d-flex">
+          <input
+            type="number"
+            min={1}
+            required={true}
+            value={graphId}
+            onChange={(e) => setGraphId(+e.target.value)}
+            className="form-control w-auto"
+          />
+          <input type={"submit"} value={"View"} className="btn btn-outline-light mx-2"/>
+        </div>
       </form>
-      <br />
       <div>
         {showResult && !graph.error && graph.data && (
           <>
