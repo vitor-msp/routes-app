@@ -4,7 +4,7 @@ Site para obtenção das melhores rotas para transporte em um mapa (grafo).
 
 ![demonstração do Routes App](demo.gif)
 
-O backend está disponibilizado no GitLab e pode ser acessado [aqui](https://gitlab.com/vitor-msp/desafio-dev-jr-pl)
+O backend pode ser acessado [aqui](https://github.com/vitor-msp/routes-api)
 
 ## Execução
 
