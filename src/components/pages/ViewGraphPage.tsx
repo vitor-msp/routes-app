@@ -52,7 +52,7 @@ export const ViewGraphPage = () => {
             {graph.data?.id && <BtnsGraphOpts />}
 
             <div>
-              {graph.data?.data?.map(({ source, target, distance }) => (
+              {graph.data?.edges?.map(({ source, target, distance }) => (
                 <Edge
                   key={counter++}
                   editable={false}

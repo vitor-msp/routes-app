@@ -31,13 +31,13 @@ export const InputsGraphSelected: React.FC<Props> = ({
 
   const getSourcesFromGraph = () => {
     const set = new Set<string>();
-    graph.data?.data.forEach(({ source }) => set.add(source))!;
+    graph.data?.edges.forEach(({ source }) => set.add(source))!;
     setSources(Array.from<string>(set));
   };
 
   const getTargetsFromGraph = () => {
     const set = new Set<string>();
-    graph.data?.data.forEach(({ target }) => set.add(target))!;
+    graph.data?.edges.forEach(({ target }) => set.add(target))!;
     setTargets(Array.from<string>(set));
   };
 

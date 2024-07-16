@@ -35,7 +35,7 @@ export const RegisterGraphPage = () => {
   const registerGraph = async () => {
     await dispatch(
       postGraphRequest({
-        data: edges,
+        edges: edges,
       })
     );
     setShowResult(true);

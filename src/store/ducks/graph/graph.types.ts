@@ -6,7 +6,7 @@ export interface IEdge {
 
 export interface IGraph {
   id?: number;
-  data: IEdge[];
+  edges: IEdge[];
 }
 
 export interface IGraphState {
