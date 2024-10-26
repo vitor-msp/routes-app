@@ -4,7 +4,7 @@ import { GetMinRouteDTO } from "../store/ducks/path/path.types";
 import { GetRoutesDTO } from "../store/ducks/routes/routes.types";
 
 const api = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: process.env.REACT_APP_API_URL,
   headers: {
     "Content-type": "application/json",
   },
