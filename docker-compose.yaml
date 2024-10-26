@@ -2,27 +2,9 @@ version: "3"
 
 services:
 
-  mongo:
-    container_name: mongo
-    image: mongo
-    restart: always
-    # se for necessário armazenar o contéudo do banco de dados,
-    # basta descomentar as próximas 2 linhas (o contéudo será salvo na pasta data em seu pc)
-    # volumes:
-    #   - ./data:/data/db
-
-  api:
-    container_name: api
-    restart: always
-    image: vitormsp/routes-api
-    ports:
-      - "8080:8080"
-    links:
-      - mongo
-
   app:
-    container_name: app
+    container_name: routes-app
     restart: always
     build: .
     ports:
-      - "3000:3000"
+      - "80:80"
