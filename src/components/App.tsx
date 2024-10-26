@@ -8,7 +8,7 @@ import { ViewGraphPage } from "./pages/ViewGraphPage";
 function App() {
   return (
     <div className="bg-success" style={{minHeight: "100vw"}}>
-      <h1 className="text-center text-light">Routes App</h1>
+      <h1 className="text-center text-light">Routes App edited</h1>
       <div className="px-2 px-sm-4 px-md-5">
         <BrowserRouter>
           <Routes>
