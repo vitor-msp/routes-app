@@ -4,7 +4,9 @@ Site para obtenção das melhores rotas para transporte em um mapa (grafo).
 
 ![demonstração do Routes App](demo.gif)
 
-O backend pode ser acessado [aqui](https://github.com/vitor-msp/routes-api)
+- Acesse o backend [aqui](https://github.com/vitor-msp/routes-api)
+
+- Acesse a infraestrutura [aqui](https://github.com/vitor-msp/routes-infra)
 
 ## Execução
 
@@ -33,5 +35,3 @@ sudo docker-compose up -d
 2. Caso seja necessário organizar seu conteúdo json para testes pelo Swagger, é possível usar a página html disponível [aqui](http://localhost:8080/json-beautify)
 
 3. Para utilizar o site, basta acessar [aqui](http://localhost:3000)
-
-4. Acesse o backend [aqui](https://github.com/vitor-msp/routes-api)
